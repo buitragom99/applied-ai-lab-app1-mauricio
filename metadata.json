@@ -1,9 +1,8 @@
 {
-  "name": "Applied AI Lab App 1",
-  "description": "Interactive Applied AI Lab workbench for prompt engineering, RAG pipeline simulations, embedding similarity, and experiment evaluation.",
-  "prompt": "Applied AI Lab App 1",
-  "capabilities": [
+  "name": "Quarterly Sales Regional Intelligence",
+  "description": "Executive sales analytics platform to analyze revenue by region and quarter with automated AI variance summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ],
-  "permissions": []
+  ]
 }
