@@ -1,0 +1,9 @@
+{
+  "name": "Applied AI Lab App 1",
+  "description": "Interactive Applied AI Lab workbench for prompt engineering, RAG pipeline simulations, embedding similarity, and experiment evaluation.",
+  "prompt": "Applied AI Lab App 1",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "permissions": []
+}
