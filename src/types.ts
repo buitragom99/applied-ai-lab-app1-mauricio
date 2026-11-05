@@ -1,76 +1,55 @@
-export interface SalesOrder {
-  id?: string;
-  quarter: string; // e.g., 'Q1', 'Q2', 'Q3', 'Q4' or '2024-Q1'
+export interface OrderRow {
+  id: string;
+  quarter: string;
   region: string;
   channel: string;
   product: string;
   units: number;
-  discount_pct: number; // 0 - 100 or 0 - 1 decimal
+  discount_pct: number; // e.g. 15 for 15% or 0.15 normalized
   revenue: number;
 }
 
-export interface ProductDriver {
-  product: string;
+export interface RegionDriver {
+  name: string;
   q2Revenue: number;
   q3Revenue: number;
-  diff: number;
-  pctChange: number;
+  deltaRevenue: number;
+  deltaPct: number;
 }
 
-export interface ChannelDriver {
-  channel: string;
+export interface RegionSummaryData {
+  region: string;
   q2Revenue: number;
   q3Revenue: number;
-  diff: number;
-  pctChange: number;
+  deltaRevenue: number;
+  deltaPct: number;
+  q2Units: number;
+  q3Units: number;
+  deltaUnits: number;
+  q2AvgDiscountPct: number;
+  q3AvgDiscountPct: number;
+  topProductDriver?: RegionDriver;
+  topChannelDriver?: RegionDriver;
 }
 
-export interface RegionQuarterData {
+export interface AnalysisPayload {
+  mostChangedRegion: RegionSummaryData;
+  changeMetricType: 'absolute' | 'percentage';
+  allRegions: RegionSummaryData[];
+}
+
+export interface RegionQuarterCell {
   revenue: number;
   units: number;
   avgDiscount: number;
   orderCount: number;
 }
 
-export interface RegionVarianceAnalysis {
-  region: string;
-  q2Revenue: number;
-  q3Revenue: number;
-  revenueDiff: number;
-  absRevenueDiff: number;
-  pctChange: number;
-  q2Units: number;
-  q3Units: number;
-  unitsDiff: number;
-  q2AvgDiscount: number;
-  q3AvgDiscount: number;
-  topProductDrivers: ProductDriver[];
-  topChannelDrivers: ChannelDriver[];
-  primaryProductGrowth?: string;
-  primaryChannelGrowth?: string;
-}
-
-export interface AggregatedAnalytics {
+export interface MatrixData {
   quarters: string[];
   regions: string[];
-  channels: string[];
-  products: string[];
-  matrix: Record<string, Record<string, RegionQuarterData>>; // [region][quarter]
-  quarterTotals: Record<string, number>;
-  regionTotals: Record<string, number>;
-  grandTotalRevenue: number;
-  grandTotalUnits: number;
-  overallAvgDiscount: number;
-  hasQ2AndQ3: boolean;
-  regionVariances: RegionVarianceAnalysis[];
-  maxDollarChangedRegion: RegionVarianceAnalysis | null;
-  maxPctChangedRegion: RegionVarianceAnalysis | null;
-}
-
-export interface AiSummaryResponse {
-  summary: string;
-  model: string;
-  targetRegion: string;
-  revenueDiff: number;
-  pctChange: number;
+  data: Record<string, Record<string, RegionQuarterCell>>; // region -> quarter -> cell
+  regionTotals: Record<string, RegionQuarterCell>;
+  quarterTotals: Record<string, RegionQuarterCell>;
+  grandTotal: RegionQuarterCell;
 }

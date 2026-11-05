@@ -1,73 +1,79 @@
-export const SAMPLE_SALES_CSV = `quarter,region,channel,product,units,discount_pct,revenue
-Q1,North America,Direct Enterprise,Cloud ERP Suite,120,5.0,720000
-Q1,North America,Digital Online,AI Analytics Core,310,12.0,465000
-Q1,North America,Strategic Partner,CyberSec Gateway,190,15.0,380000
-Q1,North America,Wholesale Distributor,Mobile Device Fleet,450,18.0,450000
-Q1,EMEA,Direct Enterprise,Cloud ERP Suite,90,6.0,540000
-Q1,EMEA,Digital Online,AI Analytics Core,220,10.0,330000
-Q1,EMEA,Strategic Partner,CyberSec Gateway,160,14.0,320000
-Q1,EMEA,Wholesale Distributor,Mobile Device Fleet,300,16.0,300000
-Q1,APAC,Direct Enterprise,Cloud ERP Suite,70,8.0,420000
-Q1,APAC,Digital Online,AI Analytics Core,180,15.0,270000
-Q1,APAC,Strategic Partner,CyberSec Gateway,110,12.0,220000
-Q1,APAC,Wholesale Distributor,Mobile Device Fleet,200,20.0,200000
-Q1,Latin America,Direct Enterprise,Cloud ERP Suite,40,7.0,240000
-Q1,Latin America,Digital Online,AI Analytics Core,80,14.0,120000
-Q1,Latin America,Strategic Partner,CyberSec Gateway,50,15.0,100000
-Q2,North America,Direct Enterprise,Cloud ERP Suite,145,6.0,870000
-Q2,North America,Digital Online,AI Analytics Core,340,11.0,510000
-Q2,North America,Strategic Partner,CyberSec Gateway,240,14.0,480000
-Q2,North America,Wholesale Distributor,Mobile Device Fleet,590,17.0,590000
-Q2,EMEA,Direct Enterprise,Cloud ERP Suite,105,5.5,630000
-Q2,EMEA,Digital Online,AI Analytics Core,250,9.0,375000
-Q2,EMEA,Strategic Partner,CyberSec Gateway,175,13.0,350000
-Q2,EMEA,Wholesale Distributor,Mobile Device Fleet,265,15.0,265000
-Q2,APAC,Direct Enterprise,Cloud ERP Suite,85,7.0,510000
-Q2,APAC,Digital Online,AI Analytics Core,200,14.5,300000
-Q2,APAC,Strategic Partner,CyberSec Gateway,115,12.0,230000
-Q2,APAC,Wholesale Distributor,Mobile Device Fleet,140,18.0,140000
-Q2,Latin America,Direct Enterprise,Cloud ERP Suite,45,6.0,270000
-Q2,Latin America,Digital Online,AI Analytics Core,75,12.0,112500
-Q2,Latin America,Strategic Partner,CyberSec Gateway,45,15.0,90000
-Q3,North America,Direct Enterprise,Cloud ERP Suite,130,7.5,780000
-Q3,North America,Digital Online,AI Analytics Core,315,13.0,472500
-Q3,North America,Strategic Partner,CyberSec Gateway,220,16.0,440000
-Q3,North America,Wholesale Distributor,Mobile Device Fleet,517,19.0,517500
-Q3,EMEA,Direct Enterprise,Cloud ERP Suite,115,5.0,690000
-Q3,EMEA,Digital Online,AI Analytics Core,270,8.5,405000
-Q3,EMEA,Strategic Partner,CyberSec Gateway,190,12.5,380000
-Q3,EMEA,Wholesale Distributor,Mobile Device Fleet,305,14.0,305000
-Q3,APAC,Direct Enterprise,Cloud ERP Suite,110,6.0,660000
-Q3,APAC,Digital Online,AI Analytics Core,520,8.2,780000
-Q3,APAC,Strategic Partner,CyberSec Gateway,140,10.0,280000
-Q3,APAC,Wholesale Distributor,Mobile Device Fleet,120,15.0,120000
-Q3,Latin America,Direct Enterprise,Cloud ERP Suite,55,5.0,330000
-Q3,Latin America,Digital Online,AI Analytics Core,105,10.0,157500
-Q3,Latin America,Strategic Partner,CyberSec Gateway,50,13.0,102500
-Q4,North America,Direct Enterprise,Cloud ERP Suite,160,5.0,960000
-Q4,North America,Digital Online,AI Analytics Core,390,10.0,585000
-Q4,North America,Strategic Partner,CyberSec Gateway,270,13.0,540000
-Q4,North America,Wholesale Distributor,Mobile Device Fleet,620,16.0,620000
-Q4,EMEA,Direct Enterprise,Cloud ERP Suite,125,5.0,750000
-Q4,EMEA,Digital Online,AI Analytics Core,290,8.0,435000
-Q4,EMEA,Strategic Partner,CyberSec Gateway,210,11.0,420000
-Q4,EMEA,Wholesale Distributor,Mobile Device Fleet,340,13.0,340000
-Q4,APAC,Direct Enterprise,Cloud ERP Suite,130,5.5,780000
-Q4,APAC,Digital Online,AI Analytics Core,580,7.5,870000
-Q4,APAC,Strategic Partner,CyberSec Gateway,160,9.0,320000
-Q4,APAC,Wholesale Distributor,Mobile Device Fleet,150,14.0,150000
-Q4,Latin America,Direct Enterprise,Cloud ERP Suite,65,5.0,390000
-Q4,Latin America,Digital Online,AI Analytics Core,120,9.0,180000
-Q4,Latin America,Strategic Partner,CyberSec Gateway,60,12.0,120000`;
+import { OrderRow } from '../types';
 
-export function downloadSampleCsvFile() {
-  const blob = new Blob([SAMPLE_SALES_CSV], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.setAttribute('href', url);
-  link.setAttribute('download', 'sales_orders_quarterly_sample.csv');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+export const SAMPLE_CSV_DATA = `quarter,region,channel,product,units,discount_pct,revenue
+Q1,North America,Direct Enterprise,Cloud Enterprise Suite,250,5.0,2375000
+Q1,North America,Online Platform,AI Analytics Hub,420,10.0,840000
+Q1,North America,Wholesale Partner,CyberSec Shield,600,15.0,1020000
+Q1,North America,Direct Enterprise,Quantum DB,180,8.0,1656000
+Q1,EMEA,Direct Enterprise,Cloud Enterprise Suite,190,7.0,1767000
+Q1,EMEA,Wholesale Partner,CyberSec Shield,450,12.0,792000
+Q1,EMEA,Online Platform,AI Analytics Hub,310,10.0,620000
+Q1,APAC,Online Platform,Cloud Enterprise Suite,140,6.0,1316000
+Q1,APAC,Direct Enterprise,AI Analytics Hub,260,8.0,520000
+Q1,APAC,Wholesale Partner,Quantum DB,110,14.0,946000
+Q1,LATAM,Online Platform,AI Analytics Hub,150,12.0,300000
+Q1,LATAM,Wholesale Partner,CyberSec Shield,220,18.0,360800
+Q2,North America,Direct Enterprise,Cloud Enterprise Suite,280,6.0,2632000
+Q2,North America,Online Platform,AI Analytics Hub,460,8.0,920000
+Q2,North America,Wholesale Partner,CyberSec Shield,650,14.0,1118000
+Q2,North America,Direct Enterprise,Quantum DB,210,7.0,1953000
+Q2,EMEA,Direct Enterprise,Cloud Enterprise Suite,210,6.0,1974000
+Q2,EMEA,Wholesale Partner,CyberSec Shield,490,10.0,882000
+Q2,EMEA,Online Platform,AI Analytics Hub,340,9.0,680000
+Q2,EMEA,Direct Enterprise,Quantum DB,140,8.0,1288000
+Q2,APAC,Online Platform,Cloud Enterprise Suite,160,5.0,1520000
+Q2,APAC,Direct Enterprise,AI Analytics Hub,290,7.0,580000
+Q2,APAC,Wholesale Partner,Quantum DB,125,12.0,1100000
+Q2,APAC,Online Platform,CyberSec Shield,300,10.0,540000
+Q2,LATAM,Online Platform,AI Analytics Hub,160,11.0,320000
+Q2,LATAM,Wholesale Partner,CyberSec Shield,240,16.0,403200
+Q2,LATAM,Direct Enterprise,Cloud Enterprise Suite,75,9.0,682500
+Q3,North America,Direct Enterprise,Cloud Enterprise Suite,310,5.0,2945000
+Q3,North America,Online Platform,AI Analytics Hub,510,7.0,1020000
+Q3,North America,Wholesale Partner,CyberSec Shield,710,12.0,1249600
+Q3,North America,Direct Enterprise,Quantum DB,240,6.0,2256000
+Q3,EMEA,Direct Enterprise,Cloud Enterprise Suite,220,5.0,2090000
+Q3,EMEA,Wholesale Partner,CyberSec Shield,505,9.0,919100
+Q3,EMEA,Online Platform,AI Analytics Hub,360,8.0,720000
+Q3,EMEA,Direct Enterprise,Quantum DB,155,7.0,1441500
+Q3,APAC,Online Platform,Cloud Enterprise Suite,390,4.0,3744000
+Q3,APAC,Direct Enterprise,AI Analytics Hub,620,5.0,1240000
+Q3,APAC,Wholesale Partner,Quantum DB,260,9.0,2366000
+Q3,APAC,Online Platform,CyberSec Shield,580,8.0,1067200
+Q3,LATAM,Online Platform,AI Analytics Hub,175,10.0,350000
+Q3,LATAM,Wholesale Partner,CyberSec Shield,260,15.0,442000
+Q3,LATAM,Direct Enterprise,Cloud Enterprise Suite,90,8.0,828000
+Q4,North America,Direct Enterprise,Cloud Enterprise Suite,360,4.0,3456000
+Q4,North America,Online Platform,AI Analytics Hub,590,6.0,1180000
+Q4,North America,Wholesale Partner,CyberSec Shield,800,10.0,1440000
+Q4,North America,Direct Enterprise,Quantum DB,280,5.0,2660000
+Q4,EMEA,Direct Enterprise,Cloud Enterprise Suite,270,4.0,2592000
+Q4,EMEA,Wholesale Partner,CyberSec Shield,580,8.0,1067200
+Q4,EMEA,Online Platform,AI Analytics Hub,420,7.0,840000
+Q4,EMEA,Direct Enterprise,Quantum DB,190,6.0,1786000
+Q4,APAC,Online Platform,Cloud Enterprise Suite,430,3.0,4171000
+Q4,APAC,Direct Enterprise,AI Analytics Hub,690,4.0,1380000
+Q4,APAC,Wholesale Partner,Quantum DB,290,8.0,2668000
+Q4,APAC,Online Platform,CyberSec Shield,640,7.0,1190400
+Q4,LATAM,Online Platform,AI Analytics Hub,195,9.0,390000
+Q4,LATAM,Wholesale Partner,CyberSec Shield,290,14.0,498800
+Q4,LATAM,Direct Enterprise,Cloud Enterprise Suite,110,7.0,1023000`;
+
+export function getSampleRows(): OrderRow[] {
+  const lines = SAMPLE_CSV_DATA.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  
+  return lines.slice(1).map((line, idx) => {
+    const parts = line.split(',').map(p => p.trim());
+    return {
+      id: `row-${idx + 1}`,
+      quarter: parts[0],
+      region: parts[1],
+      channel: parts[2],
+      product: parts[3],
+      units: parseFloat(parts[4]) || 0,
+      discount_pct: parseFloat(parts[5]) || 0,
+      revenue: parseFloat(parts[6]) || 0,
+    };
+  });
 }
